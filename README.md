@@ -78,6 +78,8 @@ Formik.
 Font Awesome.
 React Bootstrap.
 
+LINK DEPLOY:
+https://fooddit.netlify.app/
 
 API:
 
