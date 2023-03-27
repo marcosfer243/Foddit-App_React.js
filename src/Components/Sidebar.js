@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 
 const Sidebar = (props) => {
   const { show, setShow, logout } = props;
+  const navigate = useNavigate();
 
   const handleHide = () => {
     console.log(setShow);
@@ -30,7 +31,9 @@ const Sidebar = (props) => {
           </li>
           <li>
             <Link to="/">
-              <button className="logout-btn" onClick={logout}>
+              <button className="logout-btn" onClick={()=>{logout()
+              navigate('/')
+              }}>
                 <BiLogOut /> Logout
               </button>
             </Link>

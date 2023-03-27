@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { mostrarError } from "../Components/MostrarError";
 
-const Login = ({ login }) => {
+const Login = ({ setIsToken }) => {
+
+  /*
   const [dataLogin, setDataLogin] = useState({
     email: "",
     password: "",
@@ -26,10 +28,17 @@ const Login = ({ login }) => {
       mostrarError("The login has an error, try again!");
     }
   };
-
+*/
   return (
     <>
-      <div className="container-form-Login">
+    <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+
+    <h1>Welcome to Foddit!</h1>
+    <button className="btn-login" onClick={()=>{setIsToken(true)}} >Entrar</button>
+    </div>
+     {/*
+     
+     <div className="container-form-Login">
         <h3>Login</h3>
         <form onSubmit={handleSubmit}>
           <input
@@ -59,6 +68,8 @@ const Login = ({ login }) => {
           </button>
         </form>
       </div>
+     */
+} 
     </>
   );
 };

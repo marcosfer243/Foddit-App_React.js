@@ -7,7 +7,7 @@ import Login from "../Login";
 // ● El menú debe tener 4 platos. Debe haber 2 veganos y 2 que no lo sean. Esto debe validarse al intentar agregar un nuevo plato.
 // ● Se deberá poder eliminar un plato del menú, lo que generará nuevamente los promedios y acumulativos (los mismos deben estar almacenados en el estado del componente utilizando Hooks)
 
-const Home = ({ login }) => {
+const Home = ({ setIsToken }) => {
   return (
     <>
       <div className="home-container">
@@ -15,7 +15,7 @@ const Home = ({ login }) => {
           src="https://i.pinimg.com/originals/07/2e/1f/072e1fc60ccfa29a3299c1c842edb411.jpg"
           alt="food"
         ></img>
-        <Login login={login} />
+        <Login setIsToken={setIsToken} />
       </div>
     </>
   );

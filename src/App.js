@@ -11,6 +11,7 @@ import {
   initAxiosInterceptors,
   deleteToken,
 } from "./Components/Helpers/auth-helper";
+import {useNavigate} from "react-router";
 import axios from "axios";
 import Home from "./Components/Views/Home";
 import Menu from "./Components/Views/Menu";
@@ -27,10 +28,13 @@ import SideBarBtn from "./Components/SideBarBtn";
 initAxiosInterceptors();
 
 function App() {
-  const [isToken, setIsToken] = useState(null);
-  const [cargandoUsuario, setCargandoUsuario] = useState(true);
+  const [isToken, setIsToken] = useState(false);
+  const [cargandoUsuario, setCargandoUsuario] = useState(false);
   const [show, setShow] = useState(false);
 
+  
+
+  /*
   useEffect(() => {
     async function cargarUsuario() {
       if (!getToken()) {
@@ -53,10 +57,10 @@ function App() {
     setIsToken(data.token);
     setToken(data.token);
   };
+  */
 
   const logout = () => {
-    setIsToken(null);
-    deleteToken();
+    setIsToken(false);
     console.log("Logout");
   };
 
@@ -75,7 +79,7 @@ function App() {
         <Sidebar show={show} setShow={setShow} logout={logout} />
       ) : null}
       {isToken ? <SideBarBtn show={show} setShow={setShow} /> : null}
-      {isToken ? <LoginRoutes /> : <LogoutRoutes login={login} />}
+      {isToken ? <LoginRoutes /> : <LogoutRoutes  setIsToken={setIsToken} />}
     </BrowserRouter>
   );
 }
@@ -95,10 +99,10 @@ const LoginRoutes = ({ cargandoUsuario }) => {
   );
 };
 
-const LogoutRoutes = ({ login }) => {
+const LogoutRoutes = ({  setIsToken }) => {
   return (
     <Routes>
-      <Route path="/" element={<Home login={login} />} />
+      <Route path="/" element={<Home setIsToken={setIsToken} />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
